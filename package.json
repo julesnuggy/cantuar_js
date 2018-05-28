@@ -4,7 +4,8 @@
   "description": "Language practice flashcard app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node ./src/index.js"
   },
   "engines": {
     "node": "10.2.1",
