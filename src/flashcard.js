@@ -1,14 +1,14 @@
 class Flashcard {
-  constructor(original, translation) {
-    this._original = original;
-    this._translation = translation;
+  constructor() {
+    this._original = '';
+    this._translation = '';
     this._object = {};
-    return this._object[this._original] = this._translation;
   }
 
-  edit(original, translation) {
+  create(original, translation) {
     this._original = original;
     this._translation = translation;
+    return this._object[this._original] = this._translation;
   }
 
 }
