@@ -4,18 +4,28 @@ let flashcard
 
 describe('Flashcard', () => {
   beforeEach(() => {
-    flashcard = new Flashcard();
+    flashcard = new Flashcard('Neih hou', 'Hello');
    })
 
-  describe('#create', () => {
+  describe('#new', () => {
     it('stores a phrase in the original language', () => {
-      flashcard.create("Neih hou", "Hello")
-      expect(flashcard._original).to.equal("Neih hou");
+      expect(flashcard._original).to.equal('Neih hou');
     })
 
     it('stores a phrase in the translated language', () => {
-      flashcard.create("Neih hou", "Hello")
-      expect(flashcard._translation).to.equal("Hello");
+      expect(flashcard._translation).to.equal('Hello');
+    })
+  })
+
+  describe('#edit', () => {
+    it('changes an existing flashcard original phrase', () => {
+      flashcard.edit('Neih hou ma?', 'How are you?')
+      expect(flashcard._original).to.equal('Neih hou ma?');
+    })
+
+    it('changes an existing flashcard translation phrase', () => {
+      flashcard.edit('Neih hou ma?', 'How are you?')
+      expect(flashcard._translation).to.equal('How are you?');
     })
   })
 })

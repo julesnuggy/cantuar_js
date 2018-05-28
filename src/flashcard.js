@@ -1,10 +1,10 @@
 class Flashcard {
-  constructor() {
-    this._original = '';
-    this._translation = '';
+  constructor(original, translation) {
+    this._original = original;
+    this._translation = translation;
   }
 
-  create(original, translation) {
+  edit(original, translation) {
     this._original = original;
     this._translation = translation;
   }
