@@ -5,7 +5,7 @@ let flashcard
 describe('Flashcard', () => {
   beforeEach(() => {
     flashcard = new Flashcard('Neih hou', 'Hello');
-   })
+  })
 
   describe('#new', () => {
     it('stores a phrase in the original language', () => {
@@ -14,6 +14,10 @@ describe('Flashcard', () => {
 
     it('stores a phrase in the translated language', () => {
       expect(flashcard._translation).to.equal('Hello');
+    })
+
+    it('returns a key-value pair object', () => {
+      expect(flashcard._object).to.eql({'Neih hou': 'Hello'});
     })
   })
 
