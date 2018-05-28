@@ -24,7 +24,11 @@ app.post('/deck', (req, res) => {
 })
 
 app.get('/deck', (req, res) => {
-  res.send(flashcard._object);
+  let flashObject
+  // flashObject = JSON.stringify(flashcard._object);
+  flashObject = flashcard._object;
+  console.log('data', flashObject)
+  res.render('deck.ejs', { data: flashObject } )
 })
 
 app.listen(process.env.PORT || 3000, () => console.log(`App is now running from port ${process.env.PORT || 3000}`));
