@@ -8,5 +8,6 @@ class Flashcard {
     this._original = original;
     this._translation = translation;
   }
+
 }
 module.exports = Flashcard;
