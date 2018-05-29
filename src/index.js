@@ -8,7 +8,7 @@ var flashcard = new Flashcard();
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({
-  extended: true;
+  extended: true
 }));
 
 app.use(bodyParser.json());
