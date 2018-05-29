@@ -1,6 +1,11 @@
+<h1>Your Flashcard Deck</h1>
+
 <% data.forEach( (entry) => { %>
   <strong><%= entry.original %></strong>
   <br>
   <%= entry.translation %>
+  <br>
+  <button>Edit</button>
+  <button>Delete</button>
   <br><br>
 <% }) %>

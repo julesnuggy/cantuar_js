@@ -23,8 +23,10 @@ app.post('/deck', (req, res) => {
 })
 
 app.get('/deck', (req, res) => {
-  let flashObject;
-  flashObject = flashcard._object;
+  res.render('deck.ejs', { data: flashcard._object } );
+})
+
+app.get('/practice', (req, res) => {
   res.render('deck.ejs', { data: flashcard._object } );
 })
 
