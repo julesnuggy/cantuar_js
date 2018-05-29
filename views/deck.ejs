@@ -1,1 +1,6 @@
-<%= Object.keys(data) %>
+<% data.forEach( (entry) => { %>
+  <strong><%= entry.original %></strong>
+  <br>
+  <%= entry.translation %>
+  <br><br>
+<% }) %>

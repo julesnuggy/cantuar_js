@@ -2,13 +2,13 @@ class Flashcard {
   constructor() {
     this._original = '';
     this._translation = '';
-    this._object = {};
+    this._object = [];
   }
 
-  create(original, translation) {
-    this._original = original;
-    this._translation = translation;
-    return this._object[this._original] = this._translation;
+  create(originalText, translationText) {
+    this._original = originalText;
+    this._translation = translationText;
+    return this._object.push({original: this._original, translation: this._translation});
   }
 
 }

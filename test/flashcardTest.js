@@ -18,10 +18,15 @@ describe('Flashcard', () => {
       expect(flashcard._translation).to.equal('Hello');
     })
 
-    it('returns a key-value pair object', () => {
+    it('returns an array of objects', () => {
       flashcard.create('Neih hou', 'Hello');
-      expect(flashcard._object).to.eql({'Neih hou': 'Hello'});
+      flashcard.create('Neih hou ma?', 'How are you?');
+      expect(flashcard._object).to.eql([
+        {original: 'Neih hou', translation: 'Hello'},
+        {original: 'Neih hou ma?', translation: 'How are you?'}
+      ]);
     })
+
   })
 
 })
