@@ -10,14 +10,11 @@ describe('Session', () => {
       {original: 'Neih giu jou mut yeh meng ah?', translation: 'What is your name?'}
     ];
     session = new Session(flashcardObject);
+    randomStub = sinon.stub(session, 'getRandom');
+    randomStub.returns(1);
   })
 
   describe('#checkIfUsed', () => {
-    beforeEach( () => {
-      randomStub = sinon.stub(session, 'getRandom');
-      randomStub.returns(1);
-    })
-
     it('returns true if the flashcard has already been used', () => {
       session.select(flashcardObject);
       selection = session.checkIfUsed(1);
@@ -32,15 +29,25 @@ describe('Session', () => {
   })
 
   describe('#getRandom', () => {
+    it('returns the number returned by genRandom', () => {
+      selection = session.getRandom();
+      expect(selection).to.equal(1);
+    })
 
+    it('runs genRandom until an unused flashcard is returned', () => {
+      // checkSpy = sinon.spy(session, 'checkIfUsed');
+      // genRandomStub = sinon.stub(session, 'genRandom')
+      // genRandomStub.returns(1)
+      genRandomSpy = sinon.spy(session, 'genRandom');
+      checkStub = sinon.stub(session, 'checkIfUsed');
+      checkStub.returns(true);
+      selection  = session.getRandom();
+      console.log("selection", selection);
+      expect(genRandomSpy.called).to.be.true;
+    })
   })
 
   describe('#select', () => {
-    beforeEach( () => {
-      randomStub = sinon.stub(session, 'getRandom');
-      randomStub.returns(1);
-    })
-
     it('selects a flashcard at random', () => {
       selection = session.select(flashcardObject);
       expect(selection).to.eql({original: 'Neih giu jou mut yeh meng ah?', translation: 'What is your name?'});

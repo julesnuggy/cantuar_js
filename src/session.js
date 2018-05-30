@@ -29,8 +29,9 @@ class Session {
   }
 
   getRandom() {
-    var number;
-    while (this.checkIfUsed(number) === true || number === null) {
+    var number
+    number = this.genRandom();;
+    while (this.checkIfUsed(number) === true) {
       number = this.genRandom();
     }
     return number;
