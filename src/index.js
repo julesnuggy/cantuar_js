@@ -34,4 +34,9 @@ app.get('/practice', (req, res) => {
   res.render('practice.ejs', { data: selectedCard } );
 })
 
+app.get('/clear_home', (req,res) => {
+  session.clearHistory();
+  res.redirect('/')
+})
+
 app.listen(process.env.PORT || 3000, () => console.log(`App is now running from port ${process.env.PORT || 3000}`));
