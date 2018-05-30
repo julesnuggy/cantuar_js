@@ -28,25 +28,6 @@ describe('Session', () => {
     })
   })
 
-  describe('#getRandom', () => {
-    it('returns the number returned by genRandom', () => {
-      selection = session.getRandom();
-      expect(selection).to.equal(1);
-    })
-
-    it('runs genRandom until an unused flashcard is returned', () => {
-      // checkSpy = sinon.spy(session, 'checkIfUsed');
-      // genRandomStub = sinon.stub(session, 'genRandom')
-      // genRandomStub.returns(1)
-      genRandomSpy = sinon.spy(session, 'genRandom');
-      checkStub = sinon.stub(session, 'checkIfUsed');
-      checkStub.returns(true);
-      selection  = session.getRandom();
-      console.log("selection", selection);
-      expect(genRandomSpy.called).to.be.true;
-    })
-  })
-
   describe('#select', () => {
     it('selects a flashcard at random', () => {
       selection = session.select(flashcardObject);
@@ -63,6 +44,22 @@ describe('Session', () => {
       randomStub.returns(0);
       selection = session.select(flashcardObject);
       expect(() => session.select(flashcardObject)).to.throw('All flashcards used!');
+    })
+  })
+
+  describe('getRandom', () => {
+    it('returns the number returned by genRandom', () => {
+      selection = session.getRandom();
+      expect(selection).to.equal(1);
+    })
+
+    it('runs genRandom until an unused flashcard is returned', () => {
+      randomStub.restore();
+      genRandomSpy = sinon.spy(session, 'genRandom');
+      session.getRandom();
+      expect(genRandomSpy.calledOnce).to.be.true;
+      session.getRandom();
+      expect(genRandomSpy.calledTwice).to.be.true;
     })
   })
 

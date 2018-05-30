@@ -7,14 +7,11 @@ class Session {
 
   select() {
     var current;
-    if (this._history.length < this._flashcards.length) {
-      current = this.getRandom();
-      this._selected = this._flashcards[current];
-      this._history.push(current);
-      return this._selected;
-    } else {
-      throw('All flashcards used!')
-    };
+    if (this._history.length >= this._flashcards.length) { throw('All flashcards used!'); };
+    current = this.getRandom();
+    this._selected = this._flashcards[current];
+    this._history.push(current);
+    return this._selected;
   };
 
   genRandom() {
@@ -31,7 +28,7 @@ class Session {
   getRandom() {
     var number
     number = this.genRandom();;
-    while (this.checkIfUsed(number) === true) {
+    while (this.checkIfUsed(number) === true && this._history < this._flashcards.length) {
       number = this.genRandom();
     }
     return number;
