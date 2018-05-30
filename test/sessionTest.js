@@ -66,4 +66,12 @@ describe('Session', () => {
     })
   })
 
+  describe('#clearHistory', () => {
+    it('clears the history object', () => {
+      session.select(flashcardObject);
+      session.clearHistory();
+      expect(session._history).to.eql([]);
+    })
+  })
+
 })

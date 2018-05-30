@@ -37,5 +37,9 @@ class Session {
     return number;
   }
 
+  clearHistory() {
+    this._history = [];
+  }
+
 };
 module.exports = Session;
