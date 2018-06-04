@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
+const serveStatic = require('serve-static')
 
-const Flashcard = require('./flashcard.js');
-const Session = require('./session.js');
+const Flashcard = require('./src/flashcard.js');
+const Session = require('./src/session.js');
+
 var flashcard = new Flashcard();
 var session, selectedCard;
 
@@ -12,6 +15,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(bodyParser.json());
 
@@ -30,6 +35,7 @@ app.get('/deck', (req, res) => {
 })
 
 app.get('/practice', (req, res) => {
+  session.clearHistory();
   selectedCard = session.select();
   res.render('practice.ejs', { data: selectedCard } );
 })

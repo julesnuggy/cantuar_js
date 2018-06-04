@@ -1,10 +1,17 @@
+<head>
+  <link href='/css/practice.css' rel='stylesheet' type='text/css'></link>
+</head>
+
+<p id='practice_original'><strong><%= data.original %></strong></p>
+<textarea rows='5' cols='30'></textarea>
+<br>
+<button>Show/Hide Translation</button>
+<p id='practice_translation'><%= data.translation %></p>
+
 <form action='/practice' method='get'>
-  <input type='submit' id='randomCard' value='Get Random Card'></input>
+  <input type='submit' id='randomCard' value='Next Random Card'></input>
 </form>
-<br><br>
-
-<%= data.original %>
-
+<br>
 <form action='/clear_home'>
   <input type='submit' value='Home'></input>
 </form>
