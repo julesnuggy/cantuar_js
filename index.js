@@ -6,6 +6,7 @@ const serveStatic = require('serve-static')
 
 const Flashcard = require('./src/flashcard.js');
 const Session = require('./src/session.js');
+var showHide = require('./helpers/showHide.js');
 
 var flashcard = new Flashcard();
 var session, selectedCard;
@@ -37,7 +38,11 @@ app.get('/deck', (req, res) => {
 app.get('/practice', (req, res) => {
   session.clearHistory();
   selectedCard = session.select();
-  res.render('practice.ejs', { data: selectedCard } );
+  res.render('practice.ejs', { data: selectedCard });
+})
+
+app.post('/practice', (req, res) => {
+  showHide('practice_translation');
 })
 
 app.get('/clear_home', (req,res) => {

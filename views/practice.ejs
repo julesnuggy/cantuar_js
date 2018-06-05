@@ -5,7 +5,9 @@
 <p id='practice_original'><strong><%= data.original %></strong></p>
 <textarea rows='5' cols='30'></textarea>
 <br>
-<button>Show/Hide Translation</button>
+<form action='/practice' method='post'>
+  <input type='submit' value='Show/Hide Translation'></input>
+</form>
 <p id='practice_translation'><%= data.translation %></p>
 
 <form action='/practice' method='get'>
