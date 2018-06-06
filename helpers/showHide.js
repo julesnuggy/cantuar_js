@@ -1,6 +1,6 @@
-module.exports = (element) => {
+function showHide(element) {
   console.log('START')
-    var target = document.getElementById(element);
+    var target = this.document.getElementById(element);
     console.log(target)
 
     if (target.getAttribute('display') === 'none') {
@@ -12,3 +12,4 @@ module.exports = (element) => {
     };
   console.log('END')
 }
+// module.exports = showHide;
