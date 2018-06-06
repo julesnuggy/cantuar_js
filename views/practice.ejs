@@ -1,13 +1,17 @@
 <head>
   <link href='/css/practice.css' rel='stylesheet' type='text/css'></link>
+  <!-- <script src='../helpers/showHide.js'></script> -->
 </head>
 
 <p id='practice_original'><strong><%= data.original %></strong></p>
 <textarea rows='5' cols='30'></textarea>
 <br>
-<button>Show/Hide Translation</button>
-<p id='practice_translation'><%= data.translation %></p>
-
+<!-- <form action='/practice' method='post'>
+  <input type='submit' value='Show/Hide Translation'></input>
+</form> -->
+<button onclick='showHide("practice_translation")'>Show/Hide Translation</button>
+<p id='practice_translation' class='hidden'><%= data.translation %></p>
+<br><br>
 <form action='/practice' method='get'>
   <input type='submit' id='randomCard' value='Next Random Card'></input>
 </form>
@@ -15,3 +19,14 @@
 <form action='/clear_home'>
   <input type='submit' value='Home'></input>
 </form>
+
+<script>
+  function showHide(element) {
+    var target = document.getElementById(element);
+    if (target.getAttribute('class') === 'hidden') {
+      target.setAttribute('class', 'visible')
+    } else {
+      target.setAttribute('class', 'hidden')
+    };
+  }
+</script>
